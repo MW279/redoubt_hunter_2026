@@ -33,7 +33,7 @@ N_LAYERS      = 3      # number of equivariant message-passing layers
 N_EPOCHS      = 60
 LR            = 3e-3
 EDGE_BATCH    = 500_000  # process edges in chunks to bound peak memory
-CURVATURE_PCT = 96       # percentile above which a point is pseudo-labelled "wall"
+CURVATURE_PCT = 93       # percentile above which a point is pseudo-labelled "wall"
 
 # e3nn tensor-product kernels are CPU-optimised; MPS hits buffer-size limits
 device = torch.device("cpu")
@@ -191,7 +191,7 @@ print(f"  Layers        : {N_LAYERS}   Lmax: {LMAX}")
 
 
 # ── 5. Training ───────────────────────────────────────────────────────────────
-class_weights = torch.tensor([1.0, 2.0]).to(device)
+class_weights = torch.tensor([1.0, 3.0]).to(device)
 print(f"\nClass weights — ground: {class_weights[0]:.2f}  wall: {class_weights[1]:.2f}")
 
 CKPT_PATH = "data/processed/se3_model.pt"
